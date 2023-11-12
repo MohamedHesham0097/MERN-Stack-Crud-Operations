@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Users = () => {
     const [users, setUsers]= useState([{
@@ -9,6 +10,7 @@ const Users = () => {
   return (
     <div className=" d-flex vh-100 bg-primary justify-content-center align-items-center " >
         <div className=' w-50 bg-white rounded p-3 ' >
+            <Link to="/create" className='btn btn-success' >Add +</Link>
             <table className='table' >
                 <thead>
                     <tr>
@@ -21,11 +23,14 @@ const Users = () => {
                 <tbody>
                     {
                         users.map((user)=> {
-                            <tr>
-                                <td>{users.Name}</td>
-                                <td>{users.Email}</td>
-                                <td>{users.Age}</td>
-                                <td> <button>Edit</button> <button>Delete</button> </td>
+                            return  <tr>
+                                <td>{user.Name}</td>
+                                <td>{user.Email}</td>
+                                <td>{user.Age}</td>
+                                <td> 
+                                    <Link to="/update" className='btn btn-success' >Update</Link>
+                                    <button>Delete</button> 
+                                </td>
                             </tr>
                         } )
                     }
